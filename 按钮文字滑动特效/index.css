@@ -1,0 +1,53 @@
+html,
+body {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    width: 200px;
+    height: 60px;
+    border: 2px solid;
+    font-size: 30px;
+    text-align: center;
+    line-height: 60px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.box span {
+    color: red;
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+/* odd */
+.box span:nth-child(2n+1) {
+    transform: translateY(-100%);
+}
+
+/* even */
+.box span:nth-child(2n) {
+    transform: translateY(100%);
+}
+
+.box span::before {
+    position: absolute;
+    content: attr(data-text);
+    color: blue;
+}
+
+.box span:nth-child(odd)::before {
+    transform: translateY(100%);
+}
+
+.box span:nth-child(even)::before {
+    transform: translateY(-100%);
+}
+
+/* 增加鼠标悬浮效果 */
+.box:hover span {
+    transform: translateY(0);
+}
