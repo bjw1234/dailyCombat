@@ -119,3 +119,39 @@ element {
     perspective-origin: 50% 50%;
 }
 ```
+
+# 创作一种侧立图书的特效
+
+* 一. `transfrom-origin`
+
+更改一个元素变形的原点。
+
+```css
+/* x-offset-keyword | y-offset */
+transform-origin: left 2px;
+
+/* x-offset-keyword | y-offset-keyword */
+transform-origin: right top;
+
+/* 如果有三个值，那第三个值表示z轴方向的偏移量 */
+/* x-offset-keyword | y-offset-keyword | z-offset */
+transform-origin: right bottom 10px;
+```
+
+* 二. `filter`滤镜的使用
+
+```css
+filter: brightness(0.6);
+
+/* 给图像设置高斯模糊 */ 
+blur(px)     
+
+/* 设置图像的明暗。 0%（全黑）--100%（无变化）--max(更亮） */ 
+brightness(%)    
+
+/* 调整图像的对比度。 0%（全黑）--100%（无变化）--max */ 
+contrast(%)    
+
+/* 将图像转化为灰度图像。 0%（无变化）--100%（完全的灰度图像） */ 
+grayscale(%)    
+```
