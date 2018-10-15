@@ -86,7 +86,7 @@ element {
 }
 ```
 
-**声明一个局部变量：**
+**声明一个全局变量：**
 
 ```css
 :root {
@@ -155,3 +155,103 @@ contrast(%)
 /* 将图像转化为灰度图像。 0%（无变化）--100%（完全的灰度图像） */ 
 grayscale(%)    
 ```
+
+# 充电loader效果
+
+* 一. `currentColor` CSS3关键字
+
+这个关键字的值 = color的值
+
+```css
+emement {
+    color: red;
+    border: 1px solid currentColor;
+}
+```
+
+* 二. `background-position` 属性
+
+`background-position` 属性设置背景图像的起始位置。
+定义背景图像`background-image`的位置，背景图形如要要重复，将从这一点开始。
+
+```css
+element {
+    /* 默认值 第一个值为水平位置，第二个值为垂直位置 */
+    background-position: 0% 0%;
+    /* 定义背景图在右上角，如果top缺失，
+    则默认值为center，也就是说垂直方向会居中 */
+    background-position: right top;
+
+    /* 一个更为牛逼的用法
+    背景图距离left为15px，距离top为30px */
+    background-position: left 15px top 30px;
+}
+```
+
+* 三. `background-image` 属性
+
+设置元素背景图像。元素的背景占据了元素的全部尺寸，包括content、padding、border，但是不包括外边距。
+
+如果设置`no-repeat`属性，则背景图片默认是从padding部分开始的。
+
+背景属性是支持多个图片：
+
+```css
+element {
+    background-image: url(img_flwr.gif), url(paper.gif);
+    background-position: right bottom, left top;
+    background-repeat: no-repeat, repeat;
+    padding: 15px;
+}
+```
+
+背景图片支持渐变：
+
+```css
+element {
+    background-image: linear-gradient(to right, white, white);    
+}
+```
+
+* 四. `background-origin` 属性
+
+属性规定 `background-position` 属性相对于什么位置来定位。
+
+`border-box`:	背景图像相对于内边距框来定位。	
+`padding-box`:	背景图像相对于边框盒来定位。	
+`content-box`:	背景图像相对于内容框来定位。
+
+* 五. `background-size` 属性
+
+`length` 设置背景图片的高度和宽度。
+`percentage` 以父元素的百分比来设置背景图片的宽度和高度。
+
+第一个值设置宽度，第二个值设置高度。
+如果只设置一个值，则第二个值会被设置为“auto”。
+
+```css
+element {
+    background-size: 50px 40px;
+    /* 宽度为父元素的百分之70，高度auto */
+    background-size: 70% /*auto*/;
+}
+```
+
+`cover` 把背景图像扩展至最大，以使背景图像完全覆盖背景区域。（背景图像超出内容区域）
+
+`contain` 把图像扩展至最大尺寸，以使宽度和高度完全适应内容区域。（背景图像未能填满内容区域）
+
+* 六. `background-clip` 属性
+
+该属性规定背景的绘制区域。
+
+语法
+
+```css
+background-clip: border-box|padding-box|content-box;
+```
+
+`border-box`背景被裁剪到边框盒。	
+`padding-box`背景被裁剪到内边距框。	
+`content-box`背景被裁剪到内容框。
+
