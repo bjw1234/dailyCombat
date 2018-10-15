@@ -164,7 +164,7 @@ grayscale(%)
 这个关键字的值 = color的值
 
 ```css
-emement {
+element {
     color: red;
     border: 1px solid currentColor;
 }
@@ -295,8 +295,11 @@ element {
 2.指定渐变的终止点位置
 
 `closest-side`: 渐变中心距离容器最近的边。
+
 `closest-corner`: 渐变中心距离容器最近的角。
+
 `farthest-side`: 渐变中心距离容器最远的边。
+
 `farthest-corner`: 渐变中心距离容器最远的角。
 
 ```css
@@ -326,3 +329,4 @@ element {
 透明的颜色节点为40px,黄色的颜色节点为41px，剩余内容为红色。
 
 `border-image`无法和`border-radius`同时生效。
+但是，可以通过嵌套标签可以完成同样的效果。
