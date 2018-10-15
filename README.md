@@ -39,6 +39,7 @@ span:nth-child(odd) {
 * 二. 关键帧动画
 
 ```css
+/* 名时曲 延次顺 */
 animation: name duration timing-function delay iteration-count direction fill-mode play-state;
 animation: 动画名称 执行时间 速度曲线 延时时间 执行次数 动画播放顺序 结束时应用的样式 播放的状态（paused|running）
 ```
@@ -255,3 +256,73 @@ background-clip: border-box|padding-box|content-box;
 `padding-box`背景被裁剪到内边距框。	
 `content-box`背景被裁剪到内容框。
 
+# CSS画panda熊猫  
+
+* 一. `border-radius`属性
+
+```css
+element {
+    /* 以下两种写法相同 */
+    border-radius: 10px;
+
+    /* 水平半径/垂直半径（左上、右上、左下、右下） */
+    border-radius: 10px 10px 10px 10px / 10px 10px 10px 10px;
+}
+```
+
+* 二. `animation` 属性
+
+```css
+direction
+element {
+   /* 名称、时间、曲线、延时、次数、顺序 */ 
+   animation: animate 1s ease-in-out -1s infinite alternate;
+}
+```
+注意这里的动画执行顺序：
+`animation-direction: alternate` 表示交替、轮流执行动画
+
+* 三. CSS的径向渐变
+
+1.指定渐变形状，并指定渐变起始点位置
+
+```css
+element {
+    background-image: radial-gradient(circle at 30% 50%, yellow, red);
+}
+```
+
+2.指定渐变的终止点位置
+
+`closest-side`: 渐变中心距离容器最近的边。
+`closest-corner`: 渐变中心距离容器最近的角。
+`farthest-side`: 渐变中心距离容器最远的边。
+`farthest-corner`: 渐变中心距离容器最远的角。
+
+```css
+element {
+    background: radial-gradient(closest circle at 50px 50px, yellow, red);
+}
+```
+
+3.指定颜色断点
+
+```css
+element {
+    /* 在(4.5em, 2em)这个点处有一个1em宽度，颜色为white的circle */
+    background: radial-gradient(circle at 4.5em 2em, white 1em, transparent 1em);
+}
+```
+
+4.椭圆类型的径向渐变
+
+```css
+element {
+    background: radial-gradient(50px 100px ellipse, transparent 40px, yellow 41px, red);
+}
+```
+
+`50px 100px ellipse`中的第一个数值`50px`表示横轴半径，`100px`表示纵轴半径。
+透明的颜色节点为40px,黄色的颜色节点为41px，剩余内容为红色。
+
+`border-image`无法和`border-radius`同时生效。
