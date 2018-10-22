@@ -330,3 +330,60 @@ element {
 
 `border-image`无法和`border-radius`同时生效。
 但是，可以通过嵌套标签可以完成同样的效果。
+
+
+# 层叠海浪效果
+
+* 一. `:nth-of-type`和`:nth-child`的区别？
+
+`ele:nth-of-type(n)`是指父元素下第`n`个`ele`元素。
+`ele:nth-child(n)`是指父元素下第`n`个元素且这个元素为`ele`，若不是，则选择失败。
+
+```html
+<ul class="demo">
+    <p>one p</p>
+    <li>one li</li>
+    <li>two li</li>
+    <p>two p</p>
+</ul>
+```
+css代码：
+
+```css
+/* one li为红色。
+   第二个子元素，且为li。   
+*/
+.demo li:nth-child(2) {
+    color: red;
+}
+/**
+   如果不指定标签类型，则依旧选中第二个元素，无论它是什么标签，
+   :nth-child(2) 选中的是 one li。 
+*/
+
+
+
+/* two li为红色。
+   第二个为li的子元素。   
+*/
+.demo li:nth-of-type(2) {
+    color: green;
+}
+/**
+   如果不指定标签类型，则会选中所有标签类型中的第二个，
+   :nth-of-type(2) 选中的是 two li 和 tow p
+*/
+```
+
+* 二. 关于海浪的实现
+
+```css
+.wave {
+    filter: opacity(0.4);
+    border-radius: 43%;
+    transform-origin: 50% 48%;
+    background-color: deepskyblue;
+}
+```
+
+通过`border-radius`属性和`animaton`旋转动画来实现。
