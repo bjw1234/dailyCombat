@@ -66,8 +66,21 @@ inset | offset-x | offset-y | color */
     to left, to top, to bottom right, ...
     颜色节点
     red 20%, blue 50%, yellow 100%
+    我们可以将这个数值理解为色标，会好理解很多。
+    那么色标与色标之间的就是渐变区域。
+
+    所以20%之前全为红色，20%到50%是红蓝渐变，50%到100%是蓝黄渐变。
 */
 background: linear-gradient(direction, color-stop1, color-stop2, ...);
+
+/*
+    如果某个色标的位置比它之前的色标值小，则该色标的位置值会被设置为它前面所有色标位置值的最大值。
+
+    所以就会变成：
+    background-image:linear-gradient(red 50%,orange 50%);
+    这样一来就不会有渐变区域出现了。
+*/
+background-image:linear-gradient(red 50%,orange 40%);
 ```
 
 # 金属光泽3D按钮特效
@@ -233,7 +246,7 @@ element {
 ```css
 element {
     background-size: 50px 40px;
-    /* 宽度为父元素的百分之70，高度auto */
+    /* 宽度为父元素的百分之70，高度auto, 也就是说，高度会跟随宽度等比变化 */
     background-size: 70% /*auto*/;
 }
 ```
@@ -387,3 +400,28 @@ css代码：
 ```
 
 通过`border-radius`属性和`animaton`旋转动画来实现。
+
+
+# 晃动的公告板
+
+* 一. 网格线的绘制
+
+```css
+/* 画出网格线 */
+.signboard::before {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    width: calc(100% + 1px);
+    height: calc(100% + 1px);
+    background-image:
+        linear-gradient(gray 1px, transparent 0),
+        linear-gradient(to right, gray 1px, transparent 0);
+    background-size: 50px 50px;
+    z-index: 1;
+}
+```
+
+当使用`linear-gradient(gray 1px, transparent 0)`这样的线性渐变时：
+是不会产生渐变效果的，因为第二个颜色色标值小于第一个值，则`transparent`的最终值为`1px`，所以最终得到的是`1px`的灰色直线。

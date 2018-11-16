@@ -1,0 +1,104 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 60%, white, sandybrown);
+}
+
+.signboard {
+    width: 400px;
+    height: 300px;
+    position: relative;
+    animation: swinging 1.5s ease-in-out infinite alternate;
+    /* 以顶部的图钉为旋转轴 */
+    transform-origin: center 13px;
+}
+
+
+/* 画出网格线 */
+.signboard::before {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    width: calc(100% + 1px);
+    height: calc(100% + 1px);
+    background-image:
+        linear-gradient(gray 1px, transparent 0),
+        linear-gradient(to right, gray 1px, transparent 0);
+    background-size: 50px 50px;
+    z-index: 1;
+}
+
+/* THANKS公告板 */
+.sign {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    border-radius: 15px;
+    font-size: 70px;
+    text-align: center;
+    line-height: 200px;
+    background: burlywood;
+    color: saddlebrown;
+    font-weight: bold;
+    text-shadow:
+        0 2px 0 rgba(255, 255, 255, 0.3),
+        0 -2px 0 rgba(0, 0, 0, 0.7);
+}
+
+/* 悬挂的线 */
+.strings {
+    width: 150px;
+    height: 150px;
+    border: 5px solid brown;
+    position: absolute;
+    border-right: none;
+    border-bottom: none;
+    transform: rotate(45deg);
+    top: 38px;
+    left: 122px;
+}
+
+/* 三个顶点 */
+.pin {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.pin.top {
+    background: gray;
+    left: 187px;
+}
+
+.pin.left,
+.pin.right {
+    background: brown;
+    top: 110px;
+    box-shadow: 0 2px 0 rgba(255, 255, 255, 0.3);
+}
+
+.pin.left {
+    left: 80px;
+}
+
+.pin.right {
+    right: 80px;
+}
+
+/* 晃动动画 */
+@keyframes swinging {
+    0% {
+        transform: rotate(-10deg);
+    }
+
+    100% {
+        transform: rotate(10deg);
+    }
+}
